@@ -35,10 +35,10 @@ dependencies:
   image_gallery_saver: ^1.6.9
   permission_handler: ^8.1.4+2
   random_string: ^2.0.1
-  wallpaper_manager: ^1.0.10
+  flutter_wallpaper_manager: ^0.0.3
   flutter_cache_manager: ^3.1.2
   fluttertoast: ^8.0.8
-  firexcode: ^1.0.8
+
 
 
 dev_dependencies:
