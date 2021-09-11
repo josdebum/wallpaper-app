@@ -50,43 +50,43 @@ class _ExampleInstagramFilterSelectionState
     );
   }
 
-  // Widget _buildPhotoWithFilter() {
-  //
-  //   return ValueListenableBuilder(
-  //     valueListenable: _filterColor,
-  //     builder: (context, value, child) {
-  //       final color = value as Color;
-  //       return CachedNetworkImage(
-  //           imageUrl: widget.imgPath,
-  //           placeholder: (context, url) => Container(
-  //             color: color.withOpacity(0.5),
-  //
-  //           ),
-  //           colorBlendMode: BlendMode.color,
-  //           fit: BoxFit.cover);
-  //
-  //     },
-  //   );
-  // }
-
-
-
-
   Widget _buildPhotoWithFilter() {
+
     return ValueListenableBuilder(
       valueListenable: _filterColor,
       builder: (context, value, child) {
         final color = value as Color;
         return CachedNetworkImage(
-          imageUrl: widget.imgPath,
-          placeholder: (context, url) => CircularProgressIndicator(
-          color: color.withOpacity(0.5),),
-          colorBlendMode: BlendMode.color,
-          fit: BoxFit.cover,
-        );
+            imageUrl: widget.imgPath,
+            placeholder: (context, url) => Container(
+              color: color.withOpacity(0.5),
+
+            ),
+            colorBlendMode: BlendMode.color,
+            fit: BoxFit.cover);
+
       },
     );
   }
+
+
+
+
+  // Widget _buildPhotoWithFilter() {
+  //   return ValueListenableBuilder(
+  //     valueListenable: _filterColor,
+  //     builder: (context, value, child) {
+  //       final color = value as Color;
+  //       return CachedNetworkImage(
+  //         imageUrl: widget.imgPath,
+  //         placeholder: (context, url) => CircularProgressIndicator(
+  //         color: color.withOpacity(0.5),),
+  //         colorBlendMode: BlendMode.color,
+  //         fit: BoxFit.cover,
+  //       );
+  //     },
+  //   );
+  // }
 
   Widget _buildFilterSelector() {
     return FilterSelector(
