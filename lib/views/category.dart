@@ -18,8 +18,8 @@ class _CategorieScreenState extends State<CategorieScreen> {
   List<PhotosModel> photos = [];
 
   getCategorieWallpaper() async {
-    await http.get(
-        "https://api.pexels.com/v1/search?query=${widget.categorie}&per_page=30&page=1",
+    await http.get(Uri.parse(
+        "https://api.pexels.com/v1/search?query=${widget.categorie}&per_page=30&page=1"),
         headers: {"Authorization": apiKEY}).then((value) {
       //print(value.body);
 

@@ -20,8 +20,8 @@ class _SearchViewState extends State<SearchView> {
   TextEditingController searchController = new TextEditingController();
 
   getSearchWallpaper(String searchQuery) async {
-    await http.get(
-        "https://api.pexels.com/v1/search?query=$searchQuery&per_page=30&page=1",
+    await http.get(Uri.parse(
+        "https://api.pexels.com/v1/search?query=$searchQuery&per_page=30&page=1"),
         headers: {"Authorization": apiKEY}).then((value) {
       //print(value.body);
 

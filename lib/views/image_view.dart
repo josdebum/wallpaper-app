@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
-//import 'package:wallpaper_app/image_editor_pro.dart';
-import 'package:firexcode/firexcode.dart';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,10 +13,11 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wallpaper_app/widgets/widgets.dart';
-import 'package:wallpaper_manager/wallpaper_manager.dart';
+
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:wallpaper_app/image_editor_pro.dart';
 //import 'dart:js' as js;
+import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 
 class ImageView extends StatefulWidget {
   final String imgPath;
@@ -51,7 +51,7 @@ class _ImageViewState extends State<ImageView> {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                   ExampleInstagramFilterSelection(imgPath: ''),
+                   ExampleInstagramFilterSelection(imgPath: widget.imgPath,),
 
                 ));
           } )
@@ -166,12 +166,10 @@ class _ImageViewState extends State<ImageView> {
 
   _askPermission() async {
     if (Platform.isIOS) {
-      /*Map<PermissionGroup, PermissionStatus> permissions =
-          */ await PermissionHandler()
-          .requestPermissions([PermissionGroup.photos]);
+
+      await Permission.photos.request();
     } else {
-      /* PermissionStatus permission = */ await PermissionHandler()
-          .checkPermissionStatus(PermissionGroup.storage);
+       await Permission.storage.status;
     }
   }
 
@@ -226,8 +224,8 @@ class _ImageViewState extends State<ImageView> {
         widget.imgPath);
 // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      result = await WallpaperManager.setWallpaperFromFile(
-          file.path, WallpaperManager.HOME_SCREEN);
+      result = (await WallpaperManager.setWallpaperFromFile(
+          file.path, WallpaperManager.HOME_SCREEN)) as String;
 
 
     } on PlatformException {
@@ -250,8 +248,8 @@ class _ImageViewState extends State<ImageView> {
         widget.imgPath);
 // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      result1 = await WallpaperManager.setWallpaperFromFile(
-          file.path, WallpaperManager.LOCK_SCREEN);
+      result1 = (await WallpaperManager.setWallpaperFromFile(
+          file.path, WallpaperManager.LOCK_SCREEN)) as String;
     } on PlatformException {
       result1 = 'Failed to get wallpaper.';
     }
@@ -270,8 +268,8 @@ class _ImageViewState extends State<ImageView> {
         widget.imgPath);
 // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      result2 = await WallpaperManager.setWallpaperFromFile(
-          file.path, WallpaperManager.BOTH_SCREENS);
+      result2 = (await WallpaperManager.setWallpaperFromFile(
+          file.path, WallpaperManager.BOTH_SCREEN)) as String;
     } on PlatformException {
       result2 = 'Failed to get wallpaper.';
     }

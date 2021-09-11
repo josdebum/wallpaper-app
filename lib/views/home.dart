@@ -32,8 +32,8 @@ class _HomeState extends State<Home> {
   List<PhotosModel> photos = [];
 
   getTrendingWallpaper() async {
-    await http.get(
-        "https://api.pexels.com/v1/curated?per_page=$noOfImageToLoad&page=1",
+    await http.get(Uri.parse(
+        "https://api.pexels.com/v1/curated?per_page=$noOfImageToLoad&page=1"),
         headers: {"Authorization": apiKEY}).then((value) {
       //print(value.body);
 
@@ -285,7 +285,7 @@ class CategoriesTile extends StatelessWidget {
                 width: 100,
                 alignment: Alignment.center,
                 child: Text(
-                  categorie ?? 'Yo Yo',
+                  categorie ?? "HO ",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 15,
