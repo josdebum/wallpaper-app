@@ -32,7 +32,7 @@ dependencies:
   dio: ^4.0.0
   url_launcher: ^6.0.9
   url_launcher_web: ^2.0.4
-  image_gallery_saver: ^1.6.9
+  image_gallery_saver:
   permission_handler: ^8.1.4+2
   random_string: ^2.0.1
   flutter_wallpaper_manager: ^0.0.3
@@ -52,9 +52,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
-
-
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
